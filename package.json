@@ -1,0 +1,65 @@
+{
+	"name": "fullwidth-quotes",
+	"version": "1.0.0",
+	"description": "Convert CJK quotation marks to fullwidth according to Unicode Standardized Variation Sequence (SVS)",
+	"author": "lunate",
+	"license": "MIT",
+	"type": "module",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/types/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/types/index.d.ts"
+		},
+		"./chars": {
+			"import": "./dist/chars.js",
+			"types": "./dist/types/chars.d.ts"
+		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/otomad/fullwidth-quotes.git"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"clear": "rimraf dist",
+		"build": "npm run clear && tsc --build"
+	},
+	"keywords": [
+		"quotes",
+		"quote",
+		"quotation-marks",
+		"quotation-mark",
+		"quotation",
+		"normalize",
+		"convert",
+		"format",
+		"fullwidth",
+		"halfwidth",
+		"unicode",
+		"cjk",
+		"full-width",
+		"half-width",
+		"double-quotes",
+		"single-quotes",
+		"doublequotes",
+		"singlequotes",
+		"svs",
+		"wide",
+		"narrow",
+		"typography",
+		"chinese",
+		"japanese",
+		"korean",
+		"codepoint"
+	],
+	"dependencies": {
+		"get-east-asian-width": "^1.3.0"
+	},
+	"devDependencies": {
+		"rimraf": "^6.0.1",
+		"typescript": "^5.7.2"
+	}
+}
