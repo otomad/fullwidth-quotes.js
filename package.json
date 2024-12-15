@@ -1,6 +1,6 @@
 {
 	"name": "fullwidth-quotes",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Convert CJK quotation marks to fullwidth according to Unicode Standardized Variation Sequence (SVS)",
 	"author": "lunate",
 	"license": "MIT",
@@ -20,8 +20,9 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/otomad/fullwidth-quotes.git"
+		"url": "git://github.com/otomad/fullwidth-quotes.js.git"
 	},
+	"homepage": "https://github.com/otomad/fullwidth-quotes.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"clear": "rimraf dist",

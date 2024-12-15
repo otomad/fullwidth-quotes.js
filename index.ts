@@ -154,11 +154,20 @@ export function disableSvsQuotes(str: string) {
 const getVs = (fullwidth: boolean) => fullwidth ? chars.FULLWIDTH_VS : chars.HALFWIDTH_VS;
 
 /**
- * Convert CJK quotation marks to fullwidth according to Unicode Standardized Variation Sequence (SVS).
+ * Convert CJK quotation marks to fullwidth by Unicode Standardized Variation Sequence (SVS).
  * @param str - String.
  * @returns If quotation marks enclose the context of Chinese or Japanese (excluding Korean), then switch them to fullwidth.
  */
-export function enableSvsQuotes(str: string) {
+export function enableSvsQuotes(str: string): string;
+/**
+ * According to the given locale, Convert CJK quotation marks to fullwidth by Unicode Standardized Variation Sequence (SVS).
+ * @param str - String.
+ * @param locale - Locale string or `Intl.Locale` object.
+ * @returns If the script of the locale is "Hani", "Hans", "Hant", or "Jpan", then switch the quotation marks to fullwidth.
+ */
+export function enableSvsQuotes(str: string, locale: string | Intl.Locale): string;
+export function enableSvsQuotes(str: string, locale?: string | Intl.Locale) {
+	if (locale) return enableSvsQuotesWithLocale(str, locale);
 	const sequence = toUnicodeStringSequence(str);
 	const stack: { quote: string; index: number }[] = [];
 	for (let i = 0; i < sequence.length; i++) {
@@ -195,4 +204,12 @@ export function enableSvsQuotes(str: string) {
 			sequence[leftIndex] = left[0] + getVs(fullwidth);
 		}
 	return sequence.join("");
+}
+
+function enableSvsQuotesWithLocale(str: string, locale: string | Intl.Locale) {
+	if (typeof locale === "string") locale = new Intl.Locale(locale);
+	locale = locale.maximize();
+	const { script } = locale;
+	if (["Hani", "Hans", "Hant", "Jpan"].includes(script!)) return alwaysToFullwidthQuotes(str);
+	else return alwaysToHalfwidthQuotes(str);
 }

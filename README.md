@@ -44,6 +44,7 @@ pnpm add fullwidth-quotes
 ```javascript
 import { enableSvsQuotes } from "fullwidth-quotes";
 enableSvsQuotes("“Hello world!”"); // Add U+FE00 after the `“` and `”` characters.
+enableSvsQuotes("“Hello world!”", "zh-CN"); // Convert only Chinese and Japanese to fullwidth quotes.
 
 import { LEFT_DOUBLE_QUOTE_FULLWIDTH, RIGHT_DOUBLE_QUOTE_FULLWIDTH } from "fullwidth-quotes/chars";
 // You can also directly get the samples of these characters.
@@ -56,6 +57,9 @@ import { LEFT_DOUBLE_QUOTE_FULLWIDTH, RIGHT_DOUBLE_QUOTE_FULLWIDTH } from "fullw
 Convert CJK quotation marks to fullwidth according to Unicode Standardized Variation Sequence (SVS).
 
 If quotation marks enclose the context of Chinese or Japanese (excluding Korean), then switch them to fullwidth.
+
+If the second parameter `locale` is provided, the quotation marks will only be converted to fullwidth when the script
+of the locale is "Hani", "Hans", "Hant", or "Jpan".
 
 #### `disableSvsQuotes`
 
